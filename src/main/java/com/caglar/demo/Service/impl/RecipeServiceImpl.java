@@ -1,8 +1,12 @@
 package com.caglar.demo.Service.impl;
 
 import com.caglar.demo.Models.Recipe;
+import com.caglar.demo.RecipeRepository;
 import com.caglar.demo.Service.RecipeService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class RecipeServiceImpl implements RecipeService {
     /*
     * Required inputs to build a recipe;
@@ -12,6 +16,14 @@ public class RecipeServiceImpl implements RecipeService {
     * desired ingredients
     *
     * */
+
+    RecipeRepository repository;
+
+    @Autowired
+    RecipeServiceImpl(RecipeRepository repository) {
+        this.repository = repository;
+    }
+
     public Recipe buildRecipe(){
         return new Recipe();
     }
